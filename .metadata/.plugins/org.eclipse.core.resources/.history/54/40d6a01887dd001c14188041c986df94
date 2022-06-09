@@ -1,0 +1,13 @@
+package com.ones.springcloud.repos;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Component;
+
+import com.ones.springcloud.models.Product;
+
+@Component
+public interface ProductRepo extends JpaRepository<Product,Long> {
+
+	Product findByName(String name);
+
+}

@@ -1,0 +1,31 @@
+package com.ones.springcloud.controllers;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.ones.springcloud.models.Product;
+import com.ones.springcloud.repos.ProductRepo;
+
+@RestController
+@RequestMapping("productapi")
+public class ProductRestController {
+	@Autowired
+	ProductRepo repo;
+	@RequestMapping(value="/product",method=RequestMethod.POST)
+	public Product create(@RequestBody Product product) {
+		return repo.save( product);
+	}
+	
+	
+	@RequestMapping(value="/product/{name}",method=RequestMethod.GET)
+	public Product getProdut(@PathVariable String name) {
+		
+		
+		return repo.findByname(name);
+	}
+
+}

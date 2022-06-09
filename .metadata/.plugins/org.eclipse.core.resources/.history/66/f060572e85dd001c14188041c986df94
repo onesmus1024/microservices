@@ -1,0 +1,5 @@
+package com.ones.springcloud.repos;
+
+public interface ProductRepo {
+
+}
